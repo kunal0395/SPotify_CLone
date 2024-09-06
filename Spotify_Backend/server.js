@@ -25,7 +25,7 @@ app.listen(port, () => console.log(`Server started on port ${port}`));
 
 app.use(cors(
     {
-        origin:[""],
+        origin:["https://spotify-clone-frontend-three.vercel.app"],
         methods:["POST","GET"],
         credentials:TRUE
     }
