@@ -14,19 +14,19 @@ connectCloudinary();
 
 // Middlewares
 app.use(express.json());
-app.use(cors());
+
+// CORS Configuration
+app.use(cors({
+    origin: ["https://spotify-clone-frontend-three.vercel.app"],
+    methods: ["POST", "GET"],
+    credentials: true, // Ensure lowercase true
+}));
 
 // Initializing routes
 app.use("/api/song", songRouter);
 app.use("/api/album", albumRouter);
 
 app.get("/", (req, res) => res.send("API Working"));
-app.listen(port, () => console.log(`Server started on port ${port}`));
 
-app.use(cors(
-    {
-        origin:["https://spotify-clone-frontend-three.vercel.app"],
-        methods:["POST","GET"],
-        credentials:TRUE
-    }
-));
+// Starting server
+app.listen(port, () => console.log(`Server started on port ${port}`));
