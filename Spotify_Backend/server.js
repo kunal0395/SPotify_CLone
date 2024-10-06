@@ -1,10 +1,10 @@
 import express from "express";
 import cors from "cors";
 import "dotenv/config";
-import songRouter from "../src/routes/songRoute.js";
-import albumRouter from "../src/routes/albumRoute.js";
-import connectDB from "../src/config/mongodb.js";
-import connectCloudinary from "../src/config/cloudinary.js";
+import songRouter from "../Spotify_Backend/src/routes/songRoute.js";
+import albumRouter from "../Spotify_Backend/src/routes/albumRoute.js";
+import connectDB from "../Spotify_Backend/src/config/mongodb.js";
+import connectCloudinary from "../Spotify_Backend/src/config/cloudinary.js";
 
 // App config
 const app = express();
@@ -16,11 +16,7 @@ connectCloudinary();
 app.use(express.json());
 
 // CORS Configuration
-app.use(cors({
-    origin: ["https://spotify-clone-frontend-three.vercel.app"],
-    methods: ["POST", "GET"],
-    credentials: true, // Ensure lowercase true
-}));
+app.use(cors());
 
 // Initializing routes
 app.use("/api/song", songRouter);
